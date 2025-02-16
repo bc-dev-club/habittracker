@@ -1,0 +1,11 @@
+services:
+  dotnet_webapi:
+    tty: true
+    image: mcr.microsoft.com/dotnet/sdk:9.0
+    container_name: dotnet_webapi
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    command: ["dotnet", "run"]
+    ports:
+      - "8000:8000"
