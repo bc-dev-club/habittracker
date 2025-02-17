@@ -15,20 +15,13 @@
 
 ## 環境構築
 
-### バックエンド
+```
+# 開発環境のビルド
+make build-development
 
-```bash
-# バックエンドのビルド
-make build-backend-development
-
-# バックエンドの実行
-make run-backend-development
+# 開発環境の実行
+make run-development
 ```
 
-### フロントエンド
-
-まだ
-
-### データベース
-
-まだ
+http://localhost:8080/ にアクセスすると、フロントエンドにプロキシされます。
+http://localhost:8000/api/ にアクセスすると、バックエンドにプロキシされます。
