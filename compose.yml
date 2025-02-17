@@ -9,3 +9,18 @@ services:
     command: ["dotnet", "run"]
     ports:
       - "8000:8000"
+
+  react_frontend:
+    tty: true
+    image: node:22
+    container_name: react_frontend
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - habittracker_front_modules:/app/node_modules
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - "5173:5173"
+
+volumes:
+  habittracker_front_modules:
