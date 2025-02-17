@@ -6,7 +6,7 @@
 ## 技術スタック
 
 - バックエンド: ASP.NET Core 9.0 C#
-- フロントエンド: React 19.0 + Next.js(App Router)
+- フロントエンド: Vite + React 19.0 + TypeScript
 - データベース: MySQL
 
 ## 必須環境
