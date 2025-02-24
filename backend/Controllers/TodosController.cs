@@ -5,7 +5,7 @@ namespace backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TodoController : ControllerBase
+    public class TodosController : ControllerBase
     {
         private readonly string[] titles = new[]
         {
