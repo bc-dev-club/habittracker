@@ -11,15 +11,23 @@ services:
     depends_on:
       - react_frontend
       - dotnet_webapi
+      - mysql
 
   dotnet_webapi:
     tty: true
-    image: mcr.microsoft.com/dotnet/sdk:9.0
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.local
     container_name: dotnet_webapi
     working_dir: /app
     volumes:
       - ./backend:/app
     command: ["dotnet", "run"]
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_DATABASE=habittracker
 
   react_frontend:
     tty: true
@@ -31,5 +39,15 @@ services:
       - habittracker_front_modules:/app/node_modules
     command: sh -c "npm install && npm run dev"
 
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: habittracker
+    volumes:
+      - habittracker_mysql_data:/var/lib/mysql
+
 volumes:
   habittracker_front_modules:
+  habittracker_mysql_data:
