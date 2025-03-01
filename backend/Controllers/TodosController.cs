@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using backend.Models;
+using backend.Data;
 
 namespace backend.Controllers
 {
@@ -21,6 +22,13 @@ namespace backend.Controllers
                     titles[index]
                 ))
                 .ToArray();
+        }
+
+        [HttpGet("dbtest")]
+        public async Task<IActionResult> DbTest([FromServices] HabitTrackerDbContext dbContext)
+        {
+            bool canConnect = await dbContext.Database.CanConnectAsync();
+            return Ok(canConnect ? "Database connection successful!" : "Database connection failed.");
         }
     }
 }

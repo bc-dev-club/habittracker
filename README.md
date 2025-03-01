@@ -5,7 +5,7 @@
 
 ## 技術スタック
 
-- バックエンド: ASP.NET Core 9.0 C#
+- バックエンド: ASP.NET Core 8.0 C#
 - フロントエンド: Vite + React 19.0 + TypeScript
 - データベース: MySQL
 
