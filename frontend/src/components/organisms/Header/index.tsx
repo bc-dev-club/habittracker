@@ -19,7 +19,7 @@ const Styles: { [key: string]: CSSProperties } = {
   },
 };
 
-const Header = () => {
+export const Header = () => {
   return (
     <header style={Styles.header}>
       <LeftHeaderMenu />
@@ -27,5 +27,3 @@ const Header = () => {
     </header>
   );
 };
-
-export { Header };
