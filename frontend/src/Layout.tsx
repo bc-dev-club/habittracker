@@ -10,11 +10,11 @@ const Styles: { [key: string]: CSSProperties } = {
 
 export const Layout = () => {
   return (
-    <div>
+    <>
       <Header />
       <main style={Styles.main}>
         <Outlet />
       </main>
-    </div>
+    </>
   );
 };
