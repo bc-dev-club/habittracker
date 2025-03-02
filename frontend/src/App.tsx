@@ -6,6 +6,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* TODO: ログイン後画面でのみLayoutを出すように修正 */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
         </Route>
