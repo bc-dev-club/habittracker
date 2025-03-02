@@ -1,6 +1,7 @@
+import { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 
-const Styles = {
+const Styles: { [key: string]: CSSProperties } = {
   leftHeaderMenu: {
     height: "100%",
     display: "flex",
@@ -13,18 +14,20 @@ const Styles = {
   },
 };
 
+const navItems: { text: string; link: string }[] = [
+  { text: "ホーム", link: "/" },
+  { text: "目標一覧", link: "/" },
+  { text: "定期レポート一覧", link: "/" },
+];
+
 export const LeftHeaderMenu = () => {
   return (
     <nav style={Styles.leftHeaderMenu}>
-      <Link to="/" style={Styles.navLink}>
-        ホーム
-      </Link>
-      <Link to="/" style={Styles.navLink}>
-        目標一覧
-      </Link>
-      <Link to="/" style={Styles.navLink}>
-        定期レポート一覧
-      </Link>
+      {navItems.map((item) => (
+        <Link to={item.link} style={Styles.navLink}>
+          {item.text}
+        </Link>
+      ))}
     </nav>
   );
 };
