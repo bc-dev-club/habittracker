@@ -15,7 +15,7 @@ const Styles = {
 
 export const LeftHeaderMenu = () => {
   return (
-    <div style={Styles.leftHeaderMenu}>
+    <nav style={Styles.leftHeaderMenu}>
       <Link to="/" style={Styles.navLink}>
         ホーム
       </Link>
@@ -25,6 +25,6 @@ export const LeftHeaderMenu = () => {
       <Link to="/" style={Styles.navLink}>
         定期レポート一覧
       </Link>
-    </div>
+    </nav>
   );
 };
