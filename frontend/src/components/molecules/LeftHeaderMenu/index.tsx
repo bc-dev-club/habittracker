@@ -6,7 +6,7 @@ const Styles = {
     display: "flex",
     alignItems: "center",
   },
-  nav: {
+  navLink: {
     padding: "10px",
     textDecoration: "none",
     color: "inherit",
@@ -16,13 +16,13 @@ const Styles = {
 export const LeftHeaderMenu = () => {
   return (
     <div style={Styles.leftHeaderMenu}>
-      <Link to="/" style={Styles.nav}>
+      <Link to="/" style={Styles.navLink}>
         ホーム
       </Link>
-      <Link to="/" style={Styles.nav}>
+      <Link to="/" style={Styles.navLink}>
         目標一覧
       </Link>
-      <Link to="/" style={Styles.nav}>
+      <Link to="/" style={Styles.navLink}>
         定期レポート一覧
       </Link>
     </div>
