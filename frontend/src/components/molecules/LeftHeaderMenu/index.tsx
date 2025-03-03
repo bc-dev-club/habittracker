@@ -23,8 +23,8 @@ const navItems: { text: string; link: string }[] = [
 export const LeftHeaderMenu = () => {
   return (
     <nav style={Styles.leftHeaderMenu}>
-      {navItems.map((item) => (
-        <Link to={item.link} style={Styles.navLink}>
+      {navItems.map((item, index) => (
+        <Link key={index} to={item.link} style={Styles.navLink}>
           {item.text}
         </Link>
       ))}
