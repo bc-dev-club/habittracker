@@ -1,6 +1,6 @@
-import { useGoals } from "./hooks";
-import { GoalItem } from "../../molecules/GoalItem";
 import { CSSProperties } from "react";
+import { GoalItem } from "@/components/molecules/GoalItem";
+import { useGoals } from "./hooks";
 
 const Styles: { [key: string]: CSSProperties } = {
   container: {

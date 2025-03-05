@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { _Home } from "./pages/Home";
-import { Layout } from "./Layout";
-import { _Goals } from "./pages/Goals";
+
+import { _Home } from "@/pages/Home";
+import { Layout } from "@/Layout";
+import { _Goals } from "@/pages/Goals";
 
 export const App = () => {
   return (

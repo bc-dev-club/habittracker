@@ -1,8 +1,10 @@
 import { CSSProperties } from "react";
-import HeaderMenuClosedIcon from "../../../assets/HeaderMenuClosedIcon.svg";
-import { useRightHeaderMenu } from "./hooks";
-import HeaderMenuOpenedIcon from "../../../assets/HeaderMenuOpenedIcon.svg";
 import { Link } from "react-router-dom";
+
+import HeaderMenuClosedIcon from "@/assets/HeaderMenuClosedIcon.svg";
+import HeaderMenuOpenedIcon from "@/assets/HeaderMenuOpenedIcon.svg";
+
+import { useRightHeaderMenu } from "./hooks";
 
 const Styles: { [key: string]: CSSProperties } = {
   rightHeaderMenu: {
