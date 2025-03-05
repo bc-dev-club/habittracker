@@ -17,7 +17,7 @@ const Styles: { [key: string]: CSSProperties } = {
 const navItems: { text: string; link: string }[] = [
   { text: "ホーム", link: "/" },
   { text: "目標一覧", link: "/" },
-  { text: "定期レポート一覧", link: "/" },
+  { text: "定期レポート一覧", link: "/reports" },
 ];
 
 export const LeftHeaderMenu = () => {
