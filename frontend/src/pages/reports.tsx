@@ -9,6 +9,21 @@ const Styles: { [key: string]: CSSProperties } = {
   }
 };
 
+const ReportsData = [
+  {
+    id : 1,
+    user_id : "ponnta2845",
+    target_goal_ids : {ids:[1,2]},
+    period : Date.now
+  },
+  {
+    id : 2,
+    user_id : "ponnta2845",
+    target_goal_ids : {ids:[1,2]},
+    period : Date.now
+  }
+];
+
 export const Reports = () => {
     return (
       <div>
