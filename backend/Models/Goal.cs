@@ -12,6 +12,10 @@ namespace backend.Models
         public required string Status { get; set; }
 
         public int UserId { get; set; }
+
+        // Navigation property
+        // Seed入れるときにエラーが出るため、requiredを外している
+        // UserIdは絶対入るため、requiredを外しても問題ない
         public User? User { get; set; }
     };
 }

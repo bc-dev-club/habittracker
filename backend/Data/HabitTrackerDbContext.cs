@@ -20,7 +20,7 @@ namespace backend.Data
                 .HasOne(g => g.User)
                 .WithMany(u => u.Goals)
                 .HasForeignKey(g => g.UserId);
-            
+
             modelBuilder.SeedData();
         }
     }
