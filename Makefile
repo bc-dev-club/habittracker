@@ -7,6 +7,32 @@ build-development:
 run-development:
 	docker compose up -d
 
+.PHONY: stop-development
+stop-development:
+	docker compose down
+
+.PHONY: restart-development
+restart-development:
+	docker compose restart
+
+
+
+MIGRATION_NAME ?=
+ifeq ($(OS),Windows_NT)
+    CHECK_MIGRATION_NAME = if not defined MIGRATION_NAME ( echo MIGRATION_NAME is required. Usage: make migrate MIGRATION_NAME=your_migration_name & exit /b 1 )
+else
+    CHECK_MIGRATION_NAME = if [ -z "$(MIGRATION_NAME)" ]; then echo "MIGRATION_NAME is required. Usage: make migrate MIGRATION_NAME=your_migration_name"; exit 1; fi
+endif
+.PHONY: migrate
+migrate:
+	@$(CHECK_MIGRATION_NAME)
+	docker compose exec dotnet_webapi dotnet ef migrations add $(MIGRATION_NAME)
+	$(MAKE) db-update
+
+.PHONY: db-update
+db-update:
+	docker-compose exec dotnet_webapi dotnet ef database update
+
 # for production
 .PHONY: build-backend-production
 build-backend-production:
