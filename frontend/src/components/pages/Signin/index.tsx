@@ -60,11 +60,13 @@ const Styles: { [key: string]: CSSProperties } = {
 
 export const Signin = () => {
     const navigate = useNavigate();
+    
     const handleSignin = () => {
         navigate("/");
     };
+
     const handleRegister = () => {
-    navigate("/");
+    navigate("/Register");
     };
     
     return (
