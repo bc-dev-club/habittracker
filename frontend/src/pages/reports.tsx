@@ -7,9 +7,6 @@ const Styles: { [key: string]: CSSProperties } = {
     fontSize : "200%",
     textAlign : "center",
   },
-  reportsCenter: {
-    
-  },
   listitemStyle: {
     listStyleType : "none",
     paddingTop : "20px",
@@ -48,7 +45,7 @@ const listItems = ReportsData.map((pickData) =>
 //warning残し
 export const Reports = () => {
     return (
-      <div style={Styles.reportsCenter}>
+      <div>
         <h1 style={Styles.reportsTitle}>定期レポート一覧</h1>
         <ul style={Styles.listStyle}>{listItems}</ul>
       </div>
