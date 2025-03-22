@@ -1,8 +1,12 @@
 import { CSSProperties } from "react";
 
 const Styles: { [key: string]: CSSProperties } = {
+    container: {
+        maxWidth: "800px",
+        margin: "0 auto",
+        marginTop: "140px",
+    },
     reportsTitle: {
-      marginTop : "140px",
       fontFamily : "'Noto Sans JP', sans-serif",
       fontSize : "200%",
       textAlign : "center",
@@ -44,7 +48,7 @@ const Styles: { [key: string]: CSSProperties } = {
 
   export const Reports = () => {
       return (
-        <div>
+        <div style={Styles.container}>
           <h1 style={Styles.reportsTitle}>定期レポート一覧</h1>
           <ul style={Styles.listStyle}>{listItems}</ul>
         </div>
