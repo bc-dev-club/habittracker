@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Styles: { [key: string]: CSSProperties } = {
     container: {
@@ -56,7 +57,16 @@ const Styles: { [key: string]: CSSProperties } = {
       },
 };
 
-export const Login = () => {
+
+export const Signin = () => {
+    const navigate = useNavigate();
+    const handleSignin = () => {
+        navigate("/");
+    };
+    const handleRegister = () => {
+    navigate("/");
+    };
+    
     return (
       <>
         <div style={Styles.container}>
@@ -70,8 +80,8 @@ export const Login = () => {
                 <input type="password" id="password" placeholder="パスワード" style={Styles.input} />
 
                 <div style={Styles.loginButtons}>
-                    <button style={{ ...Styles.button, ...Styles.secondary }}>新規登録ページへ</button>
-                    <button style={{ ...Styles.button, ...Styles.primary }}>ログイン</button>
+                    <button style={{ ...Styles.button, ...Styles.secondary }} onClick={handleRegister}>新規登録ページへ</button>
+                    <button style={{ ...Styles.button, ...Styles.primary }} onClick={handleSignin}>ログイン</button>
                 </div>
             </div>
         </div>
