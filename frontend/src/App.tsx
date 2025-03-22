@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
+import { _Login } from "./pages/Login";
 import { Layout } from "./Layout";
 
 export const App = () => {
@@ -9,6 +10,7 @@ export const App = () => {
         {/* TODO: ログイン後画面でのみLayoutを出すように修正 */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="login" index element={<_Login />} />
         </Route>
       </Routes>
     </BrowserRouter>
