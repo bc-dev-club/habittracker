@@ -6,7 +6,7 @@ interface UseApiResult<T> {
   data: T | null;
   error: string | null;
   loading: boolean;
-  refetch: (newData?: T) => void;
+  refetch: (newData?: T, newQueryParams?: unknown) => void;
 }
 
 interface UseApiOptions {
