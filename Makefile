@@ -7,6 +7,47 @@ build-development:
 run-development:
 	docker compose up -d
 
+.PHONY: stop-development
+stop-development:
+	docker compose down
+
+.PHONY: restart-development
+restart-development:
+	docker compose restart
+
+
+
+MIGRATION_NAME ?=
+ifeq ($(OS),Windows_NT)
+    CHECK_MIGRATION_NAME = if not defined MIGRATION_NAME ( echo MIGRATION_NAME is required. Usage: make migrate MIGRATION_NAME=your_migration_name & exit /b 1 )
+else
+    CHECK_MIGRATION_NAME = if [ -z "$(MIGRATION_NAME)" ]; then echo "MIGRATION_NAME is required. Usage: make migrate MIGRATION_NAME=your_migration_name"; exit 1; fi
+endif
+.PHONY: migrate
+migrate:
+	@$(CHECK_MIGRATION_NAME)
+	docker compose exec dotnet_webapi dotnet ef migrations add $(MIGRATION_NAME)
+	$(MAKE) db-update
+
+.PHONY: db-update
+db-update:
+	docker-compose exec dotnet_webapi dotnet ef database update
+
+.PHONY: migration-list
+migration-list:
+	docker-compose exec dotnet_webapi dotnet ef migrations list
+
+OLD_MIGRATION_NAME ?=
+ifeq ($(OS),Windows_NT)
+    CHECK_MIGRATION_NAME = if not defined OLD_MIGRATION_NAME ( echo OLD_MIGRATION_NAME is required. Usage: make migrate OLD_MIGRATION_NAME=your_old_migration_name & exit /b 1 )
+else
+    CHECK_MIGRATION_NAME = if [ -z "$(OLD_MIGRATION_NAME)" ]; then echo "OLD_MIGRATION_NAME is required. Usage: make migrate OLD_MIGRATION_NAME=your_old_migration_name"; exit 1; fi
+endif
+.PHONY: db-down
+db-down:
+	@$(CHECK_MIGRATION_NAME)
+	docker-compose exec dotnet_webapi dotnet ef database update $(OLD_MIGRATION_NAME)
+
 # for production
 .PHONY: build-backend-production
 build-backend-production:
