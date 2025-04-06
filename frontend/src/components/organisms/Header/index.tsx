@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
-import { LeftHeaderMenu } from "../../molecules/LeftHeaderMenu";
-import { RightHeaderMenu } from "../../molecules/RightHeaderMenu";
+import { LeftHeaderMenu } from "@/components/molecules/LeftHeaderMenu";
+import { RightHeaderMenu } from "@/components/molecules/RightHeaderMenu";
 
 const Styles: { [key: string]: CSSProperties } = {
   header: {
