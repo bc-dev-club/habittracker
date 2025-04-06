@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
 import { GoalItem } from "@/components/molecules/GoalItem";
 import { useGoals } from "./hooks";
+import { BounceLoader } from "react-spinners";
 
 const Styles: { [key: string]: CSSProperties } = {
   container: {
@@ -17,26 +18,51 @@ const Styles: { [key: string]: CSSProperties } = {
     color: "#787878",
     marginBottom: "16px",
   },
+  loader: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "30px",
+  },
 };
 
 export const Goals = () => {
-  const { goals, activeGoal } = useGoals();
+  const { activeGoals, inactiveGoals, isLoading } = useGoals();
+
   return (
     <>
       <div style={Styles.container}>
         <h1 style={Styles.pageTitle}>目標一覧</h1>
 
-        {activeGoal && (
-          <div style={Styles.activeGoalContainer}>
-            <p style={Styles.goalContainerTitle}>アクティブ</p>
-            <GoalItem key={activeGoal.id} goal={activeGoal} isFirst />
+        {isLoading && (
+          <div style={Styles.loader}>
+            <BounceLoader color="#36d7b7" size={50} />
           </div>
         )}
 
-        {goals.length !== 0 && (
+        {!isLoading && activeGoals && activeGoals.length === 0 && (
+          <p style={{ textAlign: "center", marginTop: "50px" }}>
+            アクティブな目標はありません
+          </p>
+        )}
+
+        {!isLoading && inactiveGoals && inactiveGoals.length === 0 && (
+          <p style={{ textAlign: "center", marginTop: "50px" }}>
+            バックナンバーはありません
+          </p>
+        )}
+
+        {activeGoals && activeGoals.length !== 0 && (
+          <div style={Styles.activeGoalContainer}>
+            <p style={Styles.goalContainerTitle}>アクティブ</p>
+            <GoalItem key={activeGoals[0].id} goal={activeGoals[0]} isFirst />
+          </div>
+        )}
+
+        {inactiveGoals && inactiveGoals.length !== 0 && (
           <>
             <p style={Styles.goalContainerTitle}>バックナンバー</p>
-            {goals.map((goal, index) => (
+            {inactiveGoals.map((goal, index) => (
               <GoalItem key={goal.id} goal={goal} isFirst={index === 0} />
             ))}
           </>

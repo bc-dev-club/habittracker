@@ -1,34 +1,32 @@
 import { useEffect, useState } from "react";
 import * as types from "types";
+import { useApi } from "@/hooks/useApi";
+import { API_ENDPOINTS } from "@/api/apiEndpoints";
 
 export const useGoals = () => {
-  const [goals, setGoals] = useState<types.Goal[]>([]);
-  const [activeGoal, setActiveGoal] = useState<types.Goal>();
-
-  const fetchGoals = async () => {
-    // const response = await fetch("http://localhost:8080/api/goals");
-    // const data = await response.json();
-    const data: types.Goal[] = [
-      { id: 2, title: "目標1" },
-      { id: 3, title: "目標2" },
-      { id: 4, title: "目標3" },
-    ];
-    setGoals(data);
-  };
-  const fetchActiveGoal = async () => {
-    // const response = await fetch("http://localhost:8080/api/goals/active");
-    // const data = await response.json();
-    const data: types.Goal = { id: 1, title: "アクティブ目標1" };
-    setActiveGoal(data);
-  };
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { data: activeGoals, loading: activeGoalLoading } = useApi<
+    types.Goal[]
+  >({
+    url: API_ENDPOINTS.getGoals.url,
+    method: API_ENDPOINTS.getGoals.method,
+    queryPrams: { status: "active" },
+  });
+  const { data: inactiveGoals, loading: inactivevGoalsLoading } = useApi<
+    types.Goal[]
+  >({
+    url: API_ENDPOINTS.getGoals.url,
+    method: API_ENDPOINTS.getGoals.method,
+    queryPrams: { status: ["completed", "abandon"] },
+  });
 
   useEffect(() => {
-    fetchGoals();
-    fetchActiveGoal();
-  }, []);
+    setIsLoading(activeGoalLoading || inactivevGoalsLoading);
+  }, [activeGoalLoading, inactivevGoalsLoading]);
 
   return {
-    goals,
-    activeGoal,
+    activeGoals,
+    inactiveGoals,
+    isLoading,
   };
 };
