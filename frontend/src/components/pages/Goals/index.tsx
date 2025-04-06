@@ -24,6 +24,12 @@ const Styles: { [key: string]: CSSProperties } = {
     alignItems: "center",
     marginTop: "30px",
   },
+  notFound: {
+    textAlign: "center",
+    fontSize: "20px",
+    marginTop: "30px",
+    color: "#787878",
+  },
 };
 
 export const Goals = () => {
@@ -41,15 +47,11 @@ export const Goals = () => {
         )}
 
         {!isLoading && activeGoals && activeGoals.length === 0 && (
-          <p style={{ textAlign: "center", marginTop: "50px" }}>
-            アクティブな目標はありません
-          </p>
+          <p style={Styles.notFound}>アクティブな目標はありません</p>
         )}
 
         {!isLoading && inactiveGoals && inactiveGoals.length === 0 && (
-          <p style={{ textAlign: "center", marginTop: "50px" }}>
-            バックナンバーはありません
-          </p>
+          <p style={Styles.notFound}>バックナンバーはありません</p>
         )}
 
         {activeGoals && activeGoals.length !== 0 && (
